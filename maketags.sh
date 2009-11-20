@@ -170,10 +170,10 @@ $DLGPRM \
 	for TAG in $TAGLIST; do
 		if fgrep \"$TAG\" ./pkgListTmp 1> /dev/null 2> /dev/null ; then
 			echo "$TAG: ADD" >> ./${PKGDIR}/${CAT}/tagfile
-			ADDED+=1
+			ADDED=`expr $ADDED + 1`
 		else
 			echo "$TAG: SKP" >> ./${PKGDIR}/${CAT}/tagfile
-			SKIPPED+=1
+			SKIPPED=`expr $SKIPPED + 1`
 		fi;
 	done;
 	echo "# ${CAT} / $LINES / $ADDED / $SKIPPED" >> ./${PKGDIR}/tagfiles.nfo

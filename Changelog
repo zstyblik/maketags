@@ -1,0 +1,6 @@
+2009/Nov/20 @ Zdenek Styblik
+* fixed minor bug in the very first dialog (user PATH ignored) 
+* fixed tagfile stats
+
+2009/Oct/17 @ Zdenek Styblik
+* initial release
