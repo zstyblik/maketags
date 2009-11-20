@@ -41,9 +41,9 @@ rm -f ./pkgListTmp 2>/dev/null
 # new version with dialog
 dialog --title "Slackware directory" --inputbox "Please, enter path \
 to Slackware directory \
-eg. mounted CD/DVD-ROM, or use default (/mnt/tmp)" 8 70 2>SLACKDIR
+eg. mounted CD/DVD-ROM, or use default (${SLACKDIR})" 8 70 2>SLACKDIR
 if [ -s './SLACKDIR' ]; then
-	SLACKDIR=$UINPUT
+	SLACKDIR=`cat ./SLACKDIR`
 	rm -f ./SLACKDIR
 fi;
 
