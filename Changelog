@@ -1,3 +1,7 @@
+2011/May/21 @ Zdenek Styblik
+* code revision, clean up and polish
+* pkg description sorta works now
+
 2009/Nov/20 @ Zdenek Styblik
 * fixed minor bug in the very first dialog (user PATH ignored) 
 * fixed tagfile stats
