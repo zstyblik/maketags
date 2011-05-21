@@ -16,26 +16,9 @@
 set -u
 # Where can we find mounted Slackware CD/DVD/etc.
 SLACKDIR='/mnt/cdrom/'
-#TMP='/tmp/'
 # Read package description from TXT files
-# WARNING: it doesn't work, it's unsupported, don't use !!!
 PKGDESC=1
 
-### Before menu was brought in ###
-#echo "Slackware tag file generator"
-#echo "Don't forget to set SLACKDIR path"
-#echo "This script requires root priviledges though, \
-#as it writes to /var/log"
-#echo ""
-#echo "Provide path to Slackware directory eg. mounted CD/DVD-ROM"
-#echo "[Enter] - use default (${SLACKDIR})"
-#echo "[CTRL+C] - exit"
-#echo -n "Provide path to Slackware directory: "
-#read UINPUT
-#if [ ! -z ./SLACKDIR ]; then
-#	SLACKDIR=$UINPUT
-#fi
-#################################
 
 rm -f ./SLACKDIR 2>/dev/null
 rm -f ./pkgListTmp 2>/dev/null
@@ -98,12 +81,6 @@ for CAT in $(cat "/${SLACKDIR}/CHECKSUMS.md5" | grep -e "\.\/${PKGDIR}" | \
 	if [ ! -d "/${SLACKDIR}/${PKGDIR}/${CAT}" ]; then
 		continue
 	fi
-### "Old way" using Slackware's menus; not bad and fast ###
-#	sh /${SLACKDIR}/${PKGDIR}/${CAT}/maketag 2>/dev/null
-#	mkdir ${PKGDIR}/${CAT}
-#	cat /var/log/setup/tmp/SeTnewtag >> ${PKGDIR}/${CAT}/tagfile
-###########################################################
-
 # dialog parameters
 	DLGPRM=''
 	TAGLIST=''
@@ -167,7 +144,6 @@ ${DLGPRM} \
 2> ./pkgListTmp
 	if [ $? = 1 -o $? = 255 ]; then
 		cat /dev/null > ./pkgListTmp
-#		cat /dev/null > "${TMP}/SeTnewtag"
 		for TAG in $(echo "${TAGLIST}"); do
 			echo "${TAG}: SKP" >> "./${PKGDIR}/${CAT}/tagfile"
 		done
