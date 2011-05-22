@@ -144,7 +144,7 @@ ${DLGPRM} \
 2> ./pkgListTmp
 	if [ $? = 1 -o $? = 255 ]; then
 		cat /dev/null > ./pkgListTmp
-		for TAG in $(echo "${TAGLIST}"); do
+		for TAG in ${TAGLIST}; do
 			echo "${TAG}: SKP" >> "./${PKGDIR}/${CAT}/tagfile"
 		done
 		echo "# ${CAT} / ${LINES} / 0 / ${LINES}" >> "./${PKGDIR}/tagfiles.nfo"
@@ -153,7 +153,7 @@ ${DLGPRM} \
 
 	ADDED=0
 	SKIPPED=0
-	for TAG in $(echo "${TAGLIST}"); do
+	for TAG in ${TAGLIST}; do
 		if $(grep -q -e "${TAG}" ./pkgListTmp 1> /dev/null 2> /dev/null) ; then
 			echo "${TAG}: ADD" >> "./${PKGDIR}/${CAT}/tagfile"
 			ADDED=$(($ADDED+1))
