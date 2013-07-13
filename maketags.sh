@@ -263,7 +263,9 @@ for SERIE in $(ls -1 "${OUTDIR}/"); do
 	fi
 	if [ -e "${OUTDIR}/${SERIE}/tagfile" ]; then
 		printf "# Packages of serie '%s'\n" "${SERIE}" >> "${KSFILE}"
-		cat "${OUTDIR}/${SERIE}/tagfile" >> "${KSFILE}"
+		for LINE in $(cat "${OUTDIR}/${SERIE}/tagfile"); do
+			printf "#@%s/%s\n" "${SERIE}" "${LINE}" >> "${KSFILE}"
+		done
 	fi
 done
 
